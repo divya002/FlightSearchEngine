@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html,
+body {
+  font-family: Roboto, Arial, sans-serif !important;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.mat-icon-button{
+  background: #fff !important;
+  border-radius:5px !important;
+}
+.mat-datepicker-content .mat-calendar {
+  width: 256px !important;
+  height: 304px !important;
+}

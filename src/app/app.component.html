@@ -1,0 +1,180 @@
+<div style="height:100%">
+    <div class="header">
+        Flight Search Engine
+    </div>
+    <div class="second">
+
+        <div class="row" style="height:100%">
+            <div class="col-md-1 col-2 hidden_menu">
+                <i class="fa fa-plane flight" (click)="search_menu();"></i>
+            </div>
+            <div class="col-md-3 col-10 search_menu" [hidden]="hidden_menu_bar">
+                <div class="searchcontainer">
+                    <div class="form-group">
+                        <div class="row" style="margin:0">
+                            <button type="button" class="choosebutton col-6" (click)="oneway=true">One Way</button>
+                            <button type="button" class="choosebutton col-6" (click)="oneway=false"> Round</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="origin" [(ngModel)]="origin" placeholder="Enter Orgin City"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="destination" [(ngModel)]="destination"
+                            placeholder="Enter Destination City" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-10" style="padding-right:0;">
+                                <input [matDatepicker]="picker1" class="form-control" name="dDate" [(ngModel)]="dDate"
+                                    placeholder="Departure Date" required>
+                            </div>
+                            <div class="col-2" style="padding-left:0;">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" [hidden]="oneway">
+                        <div class="row">
+                            <div class="col-10" style="padding-right:0;">
+                                <input [matDatepicker]="picker2" class="form-control" name="rDate" [(ngModel)]="rDate"
+                                    placeholder="Return Date" required>
+                            </div>
+                            <div class="col-2" style="padding-left:0;">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2 disabled="false"></mat-datepicker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="passenger" [(ngModel)]="passenger" placeholder="Passengers Count"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <div style="margin: auto;display: table;">
+                            <button class="simpleButton" (click)="getFlightRecord();search=false;search_menu();">Search</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="filterdiv">
+                    <p>Refine Flight Search:</p>
+                    <input type="range" min="1000" max="10000" [(ngModel)]="maxprice" name="maxprice" class="slider" id="myRange">
+                    <p>Between 1000 -{{maxprice}}</p>
+                </div>
+
+
+            </div>
+            <div class="col-md-8 col-10 result_menu" [class.col-md-8]="!hidden_menu_bar" [class.col-md-11]="hidden_menu_bar" [hidden]="!hidden_menu_bar" >
+                <div class="resultdiv1" [hidden]="search">
+                    <button type="button" class="resultinternal" (click)="one=true" style="border-radius:20px 0 0 0">{{origin}}>>{{destination}}</button>
+                    <button type="button" class="resultinternal" (click)="one=false" [hidden]='oneway' style="border-radius:0 20px 0 0">{{destination}}
+                        >>{{origin}}</button>
+
+
+                </div>
+                <div class="resultdiv2">
+                    
+                    <ng-container *ngFor="let data of (result_Oneway | filterprice:maxprice)">
+                        <div class="resultcontainer" [hidden]="!one">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img [src]="data.image" class="img-size">
+                                    <p style="color:brown;padding:10px;">Book</p>
+                                </div>
+                                <div class="col-10">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class=""> Rs. {{data.price}}</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class=""> PNR -{{data.name}}</div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class=""> Origin: {{data.origin}}</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class=""> Destination -{{data.destination}}</div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class=""> Depart: {{data.departTime}}</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class=""> Arrive -{{data.arriveTime}}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </ng-container>
+                    <ng-container *ngFor="let data of (result_return | filterprice:maxprice)">
+                        <div class="resultcontainer" [hidden]="one">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img [src]="data.image" class="img-size">
+                                    <p style="color:brown;padding:10px;">Book</p>
+                                </div>
+                                <div class="col-10">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class=""> Rs. {{data.price}}</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class=""> PNR: {{data.name}}</div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class=""> Origin: {{data.origin}}</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class=""> Destination: {{data.destination}}</div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class=""> Depart: {{data.departTime}}</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class=""> Arrive: {{data.arriveTime}}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </ng-container>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="footer">
+        Flight Search Engine:ThoughWorks
+    </div>
+</div>

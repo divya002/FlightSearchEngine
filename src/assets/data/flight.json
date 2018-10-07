@@ -1,0 +1,85 @@
+{
+    "result": [
+        {
+            "origin": "Pune",
+            "destination": "Mumbai",
+            "departTime": "10.00 AM",
+            "arriveTime": "12.00 PM",
+            "name": "Ind-234",
+            "image":"../assets/images/airasia.png",
+            "price": 5999
+        },
+        {
+            "origin": "Pune",
+            "destination": "Kolkata",
+            "departTime": "10.00 AM",
+            "arriveTime": "12.00 PM",
+            "name": "Ind-235",
+            "image":"../assets/images/indigo.png",
+            "price": 4099
+        },
+        {
+            "origin": "Pune",
+            "destination": "Delhi",
+            "departTime": "11.00 AM",
+            "arriveTime": "01.00 PM",
+            "name": "Ind-236",
+            "image":"../assets/images/spice.png",
+            "price": 9070
+        },
+        {
+            "origin": "Pune",
+            "destination": "Delhi",
+            "departTime": "12.00 PM",
+            "arriveTime": "02.00 PM",
+            "name": "Ind-237",
+            "image":"../assets/images/airasia.png",
+            "price": 8001
+        },
+        {
+            "origin": "Pune",
+            "destination": "Kolkata",
+            "departTime": "01.00 AM",
+            "arriveTime": "12.00 PM",
+            "name": "Ind-238",
+            "image":"../assets/images/indigo.png",
+            "price": 5560
+        },
+        {
+            "origin": "Delhi",
+            "destination": "Pune",
+            "departTime": "10.00 AM",
+            "arriveTime": "01.00 AM",
+            "name": "Ind-239",
+            "image":"../assets/images/spice.png",
+            "price": 4090
+        },
+        {
+            "origin": "Pune",
+            "destination": "Delhi",
+            "departTime": "10.00 AM",
+            "arriveTime": "12.00 PM",
+            "name": "Ind-241",
+            "image":"../assets/images/airasia.png",
+            "price": 5678
+        },
+        {
+            "origin": "Delhi",
+            "destination": "Pune",
+            "departTime": "10.00 AM",
+            "arriveTime": "12.00 PM",
+            "name": "Ind-240",
+            "image":"../assets/images/indigo.png",
+            "price": 2090
+        },
+        {
+            "origin": "Pune",
+            "destination": "Delhi",
+            "departTime": "11.00 AM",
+            "arriveTime": "12.00 PM",
+            "name": "Ind-241",
+            "image":"../assets/images/spice.png",
+            "price": 3091
+        }
+    ]
+}
